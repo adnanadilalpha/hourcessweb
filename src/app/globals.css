@@ -1,0 +1,120 @@
+@import 'https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap';
+@import 'tailwindcss';
+
+@theme {
+  --color-background: #0a0a0c;
+  --color-surface: #18181c;
+  --color-elevated: #222228;
+  --color-border: #2a2a30;
+  --color-primary: #f7f7f5;
+  --color-secondary: #a6a6ad;
+  --color-lavender: #a88ee4;
+  --color-lavender-bright: #a78bfa;
+  --color-lavender-soft: #c4b5fd;
+  --color-lavender-dim: rgba(167, 139, 250, 0.18);
+  --color-ink: #0f0f11;
+
+  --font-display: 'Clash Display', 'DM Sans', system-ui, sans-serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'SF Pro', system-ui, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: #0a0a0c;
+  color: #f7f7f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+body {
+  margin: 0;
+  /* clip instead of hidden — avoids creating a new BFC that breaks position:sticky */
+  overflow-x: clip;
+}
+
+.font-display {
+  font-family: 'Clash Display', 'DM Sans', system-ui, sans-serif;
+}
+
+.font-ui {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+}
+
+@keyframes orb-pulse {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.08); }
+}
+
+@keyframes noise-drift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 4px); }
+  50% { transform: translate(3px, -2px); }
+  75% { transform: translate(-1px, 3px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0) translateX(0); opacity: 0.6; }
+  100% { transform: translateY(-120px) translateX(10px); opacity: 0; }
+}
+
+@keyframes scroll-pulse {
+  0%, 100% { transform: scaleY(0.35); opacity: 0.3; }
+  50% { transform: scaleY(1); opacity: 0.85; }
+}
+
+@keyframes ring-expand {
+  0% { transform: scale(0.6); opacity: 0.8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.scene-text-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scene-text-reveal.visible {
+  clip-path: inset(0 0% 0 0);
+}
+
+::selection {
+  background: rgba(167, 139, 250, 0.3);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f7f7f5;
+  -webkit-box-shadow: 0 0 0px 1000px #18181c inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
