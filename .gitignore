@@ -47,10 +47,8 @@ Thumbs.db
 # Vercel / deploy
 .vercel
 
-# Supabase local
-supabase/
-supabase/.temp/
-supabase/.branches/
+# Root Supabase CLI folder (migrations etc.) — not src/lib/supabase
+/supabase/
 
 # Agent / platform local state
 .claude/
