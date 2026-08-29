@@ -77,3 +77,44 @@ export async function updateWaitlistNotes(id: string, notes: string) {
   await supabase.from("admin_website_waitlist").update({ notes }).eq("id", id);
   revalidatePath("/admin/waitlist");
 }
+
+export async function resendWaitlistEmail(id: string) {
+  await requireAdmin();
+  const supabase = createAdminClient();
+
+  const { data: row, error } = await supabase
+    .from("admin_website_waitlist")
+    .select("id, email, source")
+    .eq("id", id)
+    .single();
+
+  if (error || !row) {
+    return { ok: false as const, error: "Waitlist entry not found." };
+  }
+
+  const { data: settings } = await supabase
+    .from("admin_email_settings")
+    .select("*")
+    .eq("id", 1)
+    .maybeSingle();
+
+  const mail = await sendWaitlistEmails(settings ?? defaultAdminEmailSettings, {
+    email: row.email,
+    source: row.source,
+  });
+
+  await supabase
+    .from("admin_website_waitlist")
+    .update({
+      email_status: mail.skipped ? "skipped" : mail.ok ? "sent" : "failed",
+      email_error: mail.error ?? null,
+    })
+    .eq("id", id);
+
+  revalidatePath("/admin/waitlist");
+  revalidatePath("/admin");
+
+  return mail.ok
+    ? { ok: true as const }
+    : { ok: false as const, error: mail.error ?? "Failed to send email." };
+}

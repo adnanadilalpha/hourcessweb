@@ -1,6 +1,5 @@
 import "server-only";
 
-import path from "path";
 import nodemailer from "nodemailer";
 import {
   defaultAdminEmailSettings,
@@ -10,14 +9,13 @@ import {
   buildTestEmail,
   buildWaitlistConfirmationEmail,
   buildWaitlistNotificationEmail,
-  EMAIL_LOGO_CID,
   type WaitlistSignupPayload,
 } from "@/lib/email/templates";
+import { getEmailLogoAttachment } from "@/lib/email/logo";
 
 export type { WaitlistSignupPayload };
 
 const SMTP_TIMEOUT_MS = 20_000;
-const EMAIL_LOGO_PATH = path.join(process.cwd(), "public/icon.png");
 
 function formatSmtpError(error: unknown) {
   if (!(error instanceof Error)) return "Failed to send email.";
@@ -89,13 +87,7 @@ async function sendViaSmtp(
     subject: options.subject,
     text: options.text,
     html: options.html,
-    attachments: [
-      {
-        path: EMAIL_LOGO_PATH,
-        cid: EMAIL_LOGO_CID,
-        contentDisposition: "inline",
-      },
-    ],
+    attachments: [getEmailLogoAttachment()],
   });
 }
 

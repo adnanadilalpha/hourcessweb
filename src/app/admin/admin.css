@@ -1,0 +1,17 @@
+.admin-root {
+  --color-admin-bg: #09090b;
+  --color-admin-panel: #f4f4f5;
+  --color-admin-surface: #ffffff;
+  --color-admin-muted: #71717a;
+  --color-admin-border: #e4e4e7;
+  --color-admin-foreground: #18181b;
+  --color-admin-accent: #a88ee4;
+  --color-admin-accent-soft: #ede9fe;
+  color: var(--color-admin-foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.admin-root ::selection {
+  background: rgba(168, 142, 228, 0.25);
+}

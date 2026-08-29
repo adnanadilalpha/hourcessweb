@@ -14,6 +14,10 @@
   --color-lavender-dim: rgba(167, 139, 250, 0.18);
   --color-ink: #0f0f11;
 
+  --color-admin-panel: #f4f4f5;
+  --color-admin-accent: #a88ee4;
+  --color-admin-accent-soft: #ede9fe;
+
   --font-display: 'Clash Display', 'DM Sans', system-ui, sans-serif;
   --font-ui: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'SF Pro', system-ui, sans-serif;
 }
