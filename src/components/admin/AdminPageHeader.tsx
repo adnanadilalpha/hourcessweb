@@ -85,3 +85,6 @@ export function AdminMetricCard({
 
   return inner;
 }
+
+/** @deprecated Use AdminMetricCard */
+export const AdminStatCard = AdminMetricCard;

@@ -27,3 +27,57 @@ export const SITE_KEYWORDS = [
   "real moments",
   "break the scroll",
 ] as const;
+
+/** Public support / legal contact (also used for App Store & Play Console). */
+export const SUPPORT_EMAIL = "hello@adnanstudios.com";
+
+export const LEGAL_ENTITY = "Hourcess";
+
+export const LEGAL_EFFECTIVE_DATE = "September 5, 2026";
+
+/** Matches in-app HourcessPaywallView copy. */
+export const PAYWALL_HEADLINE = "Choose what happens next";
+export const PAYWALL_TAGLINE =
+  "Unlock Hourcess and get a real moment when the scroll takes over.";
+
+/**
+ * RevenueCat / App Store / Play Store subscription products.
+ * Prices shown on the web are illustrative — live store prices may vary by region.
+ */
+export const SUBSCRIPTION_PLANS = [
+  {
+    id: "hourcess_lite",
+    name: "Hourcess Lite",
+    shortName: "Lite",
+    billing: "Monthly",
+    periodLabel: "month",
+    productHint: "Monthly auto-renewable subscription",
+    subtitle: "Billed monthly",
+    displayPrice: "$4.99/mo",
+    billedHint: "monthly",
+    popular: false,
+    summary:
+      "Full Hourcess access billed every month. Cancel anytime in your store account settings.",
+  },
+  {
+    id: "hourcess_pro",
+    name: "Hourcess Pro",
+    shortName: "Pro",
+    billing: "Yearly",
+    periodLabel: "year",
+    productHint: "Yearly auto-renewable subscription",
+    subtitle: "Best value · billed yearly",
+    displayPrice: "$29.99/yr",
+    billedHint: "yearly",
+    popular: true,
+    summary:
+      "Full Hourcess access billed once a year — typically the better value vs monthly. Cancel anytime in your store account settings.",
+  },
+] as const;
+
+export const LEGAL_LINKS = [
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms of Use" },
+  { href: "/subscriptions", label: "Subscriptions" },
+  { href: "/support", label: "Support" },
+] as const;

@@ -65,6 +65,33 @@ export default function Scene06Waitlist() {
           <p className="mt-10 font-ui text-[11px] tracking-wide text-primary/35">
             Hourcess · Choose your next moment
           </p>
+
+          <nav
+            aria-label="Legal"
+            className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-ui text-[11px] text-primary/40"
+          >
+            <a href="/privacy" className="transition hover:text-lavender">
+              Privacy
+            </a>
+            <span aria-hidden className="text-primary/20">
+              ·
+            </span>
+            <a href="/terms" className="transition hover:text-lavender">
+              Terms
+            </a>
+            <span aria-hidden className="text-primary/20">
+              ·
+            </span>
+            <a href="/subscriptions" className="transition hover:text-lavender">
+              Subscriptions
+            </a>
+            <span aria-hidden className="text-primary/20">
+              ·
+            </span>
+            <a href="/support" className="transition hover:text-lavender">
+              Support
+            </a>
+          </nav>
         </motion.div>
       </div>
     </section>
