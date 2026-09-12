@@ -67,9 +67,9 @@ export default function PrivacyPage() {
           renewal state, and related entitlements so we can unlock paid features.
         </p>
         <p>
-          <strong className="text-primary">Website waitlist.</strong> If you join the waitlist,
-          we store the email you submit and related status (for example confirmation email
-          delivery).
+          <strong className="text-primary">Website beta requests.</strong> If you request an iOS
+          TestFlight invite, we store the name, email, Apple ID email (if different), device info
+          you provide, and related status (for example confirmation email delivery).
         </p>
         <p>
           <strong className="text-primary">Support.</strong> Information you send when you email
@@ -140,24 +140,61 @@ export default function PrivacyPage() {
         <p>
           Depending on where you live, you may have rights to access, correct, delete, or export
           your personal data, and to object to or restrict certain processing. To exercise these
-          rights, email{" "}
+          rights (other than in-app account deletion below), email{" "}
           <a href={`mailto:${SUPPORT_EMAIL}`} className="text-lavender hover:underline">
             {SUPPORT_EMAIL}
           </a>
           .
         </p>
+      </LegalSection>
+
+      <LegalSection title="8. Account deletion">
         <p>
-          <strong className="text-primary">Account deletion.</strong> You can request deletion of
-          your {SITE_NAME} account and associated personal data by contacting support. Subscription
-          cancellations are managed separately through Apple or Google (see{" "}
+          You can delete your {SITE_NAME} account from inside the iOS app. Path:{" "}
+          <strong className="text-primary">Profile → Delete account</strong> (also under{" "}
+          <strong className="text-primary">Profile → Account → Delete account</strong>).
+        </p>
+        <ol className="list-decimal space-y-2 pl-5">
+          <li>Open the Hourcess app</li>
+          <li>Go to Profile</li>
+          <li>Tap Delete account (or open Account, then Delete account)</li>
+          <li>Confirm deletion</li>
+          <li>You’ll be signed out and returned to the welcome screen</li>
+        </ol>
+        <p>
+          Deletion is permanent and cannot be undone. It removes your account and associated
+          server data for that account (profile, preferences, recommendation history, and related
+          analytics stored for that account). Local device data related to {SITE_NAME} (Screen
+          Time settings, onboarding state, cached intervention data) is cleared on that device when
+          deletion completes.
+        </p>
+        <p>
+          Subscriptions purchased through Apple are <strong className="text-primary">not</strong>{" "}
+          cancelled by deleting your {SITE_NAME} account. Manage or cancel subscriptions in{" "}
+          <strong className="text-primary">
+            iPhone Settings → Apple ID → Subscriptions
+          </strong>
+          . See also{" "}
           <Link href="/subscriptions" className="text-lavender hover:underline">
             Subscriptions
+          </Link>{" "}
+          and{" "}
+          <Link href="/delete-account" className="text-lavender hover:underline">
+            Delete your account
           </Link>
-          ).
+          .
+        </p>
+        <p>
+          If you cannot access the app, contact{" "}
+          <a href={`mailto:${SUPPORT_EMAIL}`} className="text-lavender hover:underline">
+            {SUPPORT_EMAIL}
+          </a>{" "}
+          and ask for account deletion, including the email used to sign up. In-app deletion is the
+          primary method.
         </p>
       </LegalSection>
 
-      <LegalSection title="8. Children">
+      <LegalSection title="9. Children">
         <p>
           The Services are not directed to children under 13 (or the minimum age required in your
           country). We do not knowingly collect personal information from children. If you believe
@@ -169,7 +206,7 @@ export default function PrivacyPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="9. International transfers">
+      <LegalSection title="10. International transfers">
         <p>
           We may process data in countries other than your own. Where required, we use appropriate
           safeguards. By using the Services, you understand your information may be transferred to
@@ -177,14 +214,14 @@ export default function PrivacyPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="10. Security">
+      <LegalSection title="11. Security">
         <p>
           We use reasonable technical and organizational measures to protect personal data.
           No method of transmission or storage is 100% secure.
         </p>
       </LegalSection>
 
-      <LegalSection title="11. Changes">
+      <LegalSection title="12. Changes">
         <p>
           We may update this Policy from time to time. We will post the revised version on this
           page and update the effective date. Continued use after changes means you accept the
@@ -192,7 +229,7 @@ export default function PrivacyPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="12. Contact">
+      <LegalSection title="13. Contact">
         <p>
           Questions about privacy:{" "}
           <a href={`mailto:${SUPPORT_EMAIL}`} className="text-lavender hover:underline">
@@ -211,6 +248,10 @@ export default function PrivacyPage() {
           {" · "}
           <Link href="/support" className="text-lavender hover:underline">
             Support
+          </Link>
+          {" · "}
+          <Link href="/delete-account" className="text-lavender hover:underline">
+            Delete account
           </Link>
         </p>
       </LegalSection>

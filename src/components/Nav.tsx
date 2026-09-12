@@ -59,7 +59,7 @@ export default function Nav({ onWaitlistClick }: NavProps) {
           onClick={onWaitlistClick}
           className="rounded-full bg-primary px-5 py-2.5 font-ui text-sm font-medium text-ink transition-transform hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lavender"
         >
-          Choose my spot
+          Request beta
         </button>
       </motion.nav>
     </>

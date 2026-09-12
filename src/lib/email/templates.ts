@@ -1,6 +1,10 @@
 export type WaitlistSignupPayload = {
   email: string;
   source: string;
+  fullName?: string | null;
+  appleIdEmail?: string | null;
+  deviceModel?: string | null;
+  iosVersion?: string | null;
 };
 
 export const EMAIL_LOGO_CID = "hourcess-icon";
@@ -63,11 +67,6 @@ function emailShell(options: {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark" />
   <title>Hourcess</title>
-  <!--[if mso]>
-  <style type="text/css">
-    body, table, td { font-family: Arial, Helvetica, sans-serif !important; }
-  </style>
-  <![endif]-->
 </head>
 <body style="margin:0;padding:0;background:#0a0a0c;-webkit-font-smoothing:antialiased;">
   <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">
@@ -128,30 +127,50 @@ function emailShell(options: {
 </html>`;
 }
 
+function inviteEmail(payload: WaitlistSignupPayload) {
+  return (payload.appleIdEmail || payload.email).trim();
+}
+
 export function buildWaitlistNotificationEmail(
   payload: WaitlistSignupPayload,
   options: EmailTemplateOptions = {},
 ) {
-  const subject = `New waitlist signup — ${payload.email}`;
+  const invite = inviteEmail(payload);
+  const subject = `New TestFlight beta request — ${payload.email}`;
   const text = [
-    "New Hourcess website waitlist signup",
+    "New Hourcess iOS TestFlight beta request",
     "",
+    `Name: ${payload.fullName || "—"}`,
     `Email: ${payload.email}`,
+    `TestFlight / Apple ID email: ${invite}`,
+    `Device: ${payload.deviceModel || "—"}`,
+    `iOS: ${payload.iosVersion || "—"}`,
     `Source: ${payload.source}`,
     "",
-    "Open admin → Waitlist to manage.",
+    "Send a TestFlight invite to the Apple ID email above.",
+    "Open admin → Beta to manage.",
   ].join("\n");
 
   const html = emailShell({
-    preheader: `New waitlist signup from ${payload.email}`,
-    title: "New waitlist signup",
+    preheader: `TestFlight beta request from ${payload.email}`,
+    title: "New TestFlight beta request",
     logoSrc: options.logoSrc,
     bodyHtml: `
       <p style="margin:0 0 20px;font-size:15px;line-height:1.6;color:#a6a6ad;">
-        Someone chose their spot on the Hourcess website.
+        Someone requested an iOS beta invite on the Hourcess website. Send them a TestFlight invite.
       </p>
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-        ${detailRow("Email", `<a href="mailto:${escapeHtml(payload.email)}" style="color:#a88ee4;text-decoration:none;">${escapeHtml(payload.email)}</a>`)}
+        ${detailRow("Name", escapeHtml(payload.fullName || "—"))}
+        ${detailRow(
+          "Email",
+          `<a href="mailto:${escapeHtml(payload.email)}" style="color:#a88ee4;text-decoration:none;">${escapeHtml(payload.email)}</a>`,
+        )}
+        ${detailRow(
+          "TestFlight email",
+          `<a href="mailto:${escapeHtml(invite)}" style="color:#a88ee4;text-decoration:none;">${escapeHtml(invite)}</a>`,
+        )}
+        ${detailRow("Device", escapeHtml(payload.deviceModel || "—"))}
+        ${detailRow("iOS", escapeHtml(payload.iosVersion || "—"))}
         ${detailRow("Source", escapeHtml(payload.source), true)}
       </table>
     `,
@@ -164,29 +183,38 @@ export function buildWaitlistConfirmationEmail(
   payload: WaitlistSignupPayload,
   options: EmailTemplateOptions = {},
 ) {
-  const subject = "You're in — Hourcess waitlist";
+  const name = payload.fullName?.trim();
+  const greeting = name ? `Thanks, ${name}.` : "Thanks for requesting access.";
+  const invite = inviteEmail(payload);
+  const subject = "You're on the Hourcess iOS beta list";
   const text = [
-    "You're in.",
+    greeting,
     "",
-    "Your spot on the Hourcess waitlist is saved.",
-    "We'll email you when it's time to choose your next moment.",
+    "Your request for the Hourcess iOS TestFlight beta is saved.",
+    `We'll send a TestFlight invite to: ${invite}`,
+    "Check your email (and spam) for an invite from Apple / TestFlight.",
     "",
     "— Hourcess",
   ].join("\n");
 
   const html = emailShell({
-    preheader: "Your Hourcess waitlist spot is saved",
-    title: "You're in.",
+    preheader: "Your Hourcess iOS beta request is saved",
+    title: "You're on the beta list.",
     logoSrc: options.logoSrc,
     bodyHtml: `
       <p style="margin:0 0 14px;font-size:15px;line-height:1.6;color:#a6a6ad;">
-        Your spot is saved for <strong style="color:#f7f7f5;">${escapeHtml(payload.email)}</strong>.
+        ${escapeHtml(greeting)}
+      </p>
+      <p style="margin:0 0 14px;font-size:15px;line-height:1.6;color:#a6a6ad;">
+        We'll send a TestFlight invite to
+        <strong style="color:#f7f7f5;">${escapeHtml(invite)}</strong>.
+        Look for an email from Apple TestFlight — check spam if you don't see it.
       </p>
       <p style="margin:0;font-size:15px;line-height:1.6;color:#a6a6ad;">
-        We'll reach out when Hourcess is ready — and when your next moment is too.
+        Use that same Apple ID on your iPhone when you accept the invite.
       </p>
     `,
-    footerNote: "You joined the Hourcess waitlist from our website.",
+    footerNote: "You requested the Hourcess iOS TestFlight beta from our website.",
   });
 
   return { subject, text, html };
@@ -201,8 +229,8 @@ export function buildTestEmail(options: EmailTemplateOptions = {}) {
     logoSrc: options.logoSrc,
     bodyHtml: `
       <p style="margin:0;font-size:15px;line-height:1.6;color:#a6a6ad;">
-        If you received this, SMTP is configured correctly for waitlist notifications
-        (admin alert + signup confirmation).
+        If you received this, SMTP is configured correctly for beta notifications
+        (admin alert + tester confirmation).
       </p>
     `,
     footerNote: "Test message from Hourcess admin → Email.",

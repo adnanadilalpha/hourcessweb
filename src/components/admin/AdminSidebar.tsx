@@ -32,7 +32,7 @@ const NAV: {
   exact?: boolean;
 }[] = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard, exact: true },
-  { href: "/admin/waitlist", label: "Waitlist", icon: Users },
+  { href: "/admin/waitlist", label: "Beta", icon: Users },
   { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
   { href: "/admin/email", label: "Email", icon: Mail },
 ] as const;

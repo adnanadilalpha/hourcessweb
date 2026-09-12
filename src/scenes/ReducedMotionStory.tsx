@@ -80,7 +80,7 @@ export default function ReducedMotionStory() {
             <HourcessIcon size={48} />
           </div>
           <p className="mt-8 mb-8 font-display text-[clamp(1.8rem,5vw,2.8rem)] font-semibold">
-            What will you choose next?
+            Try Hourcess on TestFlight
           </p>
           <div
             className="rounded-3xl border border-white/12 p-5 text-left backdrop-blur-xl"

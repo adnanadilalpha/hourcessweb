@@ -11,7 +11,7 @@ export default function LegalShell({
 }) {
   return (
     <div className="min-h-dvh bg-background text-primary">
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(168,142,228,0.12),_transparent_55%)]" />
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_at_top,rgba(168,142,228,0.12),transparent_55%)]" />
 
       <header className="relative z-10 border-b border-white/8">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-5">
@@ -23,7 +23,7 @@ export default function LegalShell({
             href="/#waitlist"
             className="font-ui text-sm text-secondary transition hover:text-primary"
           >
-            Waitlist
+            Beta
           </Link>
         </div>
       </header>

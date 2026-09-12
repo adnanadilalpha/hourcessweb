@@ -125,9 +125,19 @@ export default function TermsPage() {
 
       <LegalSection title="10. Termination">
         <p>
-          You may stop using the Services at any time. We may suspend or terminate access if you
-          violate these Terms or if we discontinue the Services. Provisions that by nature should
-          survive (including ownership, disclaimers, and liability limits) will survive termination.
+          You may stop using the Services at any time. You may delete your account at any time
+          using the in-app <strong className="text-primary">Delete account</strong> control
+          (Profile → Delete account), subject to our{" "}
+          <Link href="/privacy" className="text-lavender hover:underline">
+            Privacy Policy
+          </Link>
+          . Step-by-step instructions:{" "}
+          <Link href="/delete-account" className="text-lavender hover:underline">
+            Delete your account
+          </Link>
+          . We may suspend or terminate access if you violate these Terms or if we discontinue the
+          Services. Provisions that by nature should survive (including ownership, disclaimers, and
+          liability limits) will survive termination.
         </p>
       </LegalSection>
 

@@ -31,7 +31,7 @@ export default async function AdminOverviewPage() {
     <div>
       <AdminPageHeader
         title="Overview"
-        description="Website waitlist, email delivery, and app analytics at a glance."
+        description="iOS beta requests, email delivery, and app analytics at a glance."
       >
         <Badge variant={emailSettings?.enabled ? "success" : "warning"}>
           Email {emailSettings?.enabled ? "on" : "off"}
@@ -46,9 +46,9 @@ export default async function AdminOverviewPage() {
 
       <div className="mb-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <AdminMetricCard
-          label="Waitlist signups"
+          label="Beta requests"
           value={waitlistCount ?? 0}
-          hint="From website"
+          hint="TestFlight signups"
           accent="lavender"
           href="/admin/waitlist"
         />

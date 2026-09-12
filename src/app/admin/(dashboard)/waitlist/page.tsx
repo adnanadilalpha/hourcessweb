@@ -15,8 +15,8 @@ export default async function AdminWaitlistPage() {
   return (
     <div>
       <AdminPageHeader
-        title="Website waitlist"
-        description="Signups from the homepage. Failed emails can be resent from the row menu."
+        title="iOS beta (TestFlight)"
+        description="Requests from the homepage. Send TestFlight invites in App Store Connect, then mark Invited here. Failed emails can be resent from the row menu."
       />
       <WaitlistTable rows={rows ?? []} />
     </div>

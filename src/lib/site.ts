@@ -76,8 +76,17 @@ export const SUBSCRIPTION_PLANS = [
 ] as const;
 
 export const LEGAL_LINKS = [
-  { href: "/privacy", label: "Privacy Policy" },
-  { href: "/terms", label: "Terms of Use" },
-  { href: "/subscriptions", label: "Subscriptions" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Terms" },
   { href: "/support", label: "Support" },
+  { href: "/delete-account", label: "Delete account" },
+] as const;
+
+/** In-app account deletion steps (App Store Review / user help). */
+export const ACCOUNT_DELETION_STEPS = [
+  "Open the Hourcess app",
+  "Go to Profile",
+  "Tap Delete account (or open Account, then Delete account)",
+  "Confirm deletion",
+  "You’ll be signed out and returned to the welcome screen",
 ] as const;

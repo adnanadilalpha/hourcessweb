@@ -6,14 +6,14 @@ import { HourcessIcon, HourcessWordmarkSVG } from "@/components/HourcessBrand";
 import { easeOutExpo } from "@/lib/motion";
 
 /**
- * Final destination — one viewport, no leftover scroll void.
+ * Final destination — iOS TestFlight beta request.
  */
 export default function Scene06Waitlist() {
   return (
     <section
       id="waitlist"
       className="relative flex min-h-dvh items-end overflow-hidden md:items-center"
-      aria-label="Join the Hourcess waitlist"
+      aria-label="Request Hourcess iOS TestFlight beta"
     >
       <img
         src="/story/leaving-room.png"
@@ -35,20 +35,20 @@ export default function Scene06Waitlist() {
           <HourcessIcon size={52} />
 
           <p className="mt-8 font-ui text-[10px] uppercase tracking-[0.42em] text-lavender">
-            Your spot
+            iOS beta
           </p>
 
           <h2 className="mt-5 font-display text-[clamp(2.4rem,7vw,4.8rem)] font-semibold leading-[1.02] tracking-tight text-primary">
-            What will you
+            Try Hourcess
             <br />
-            choose next?
+            on TestFlight
           </h2>
 
           <p className="mt-5 max-w-md font-ui text-[15px] leading-relaxed text-primary/65 md:text-base">
-            Be there when Hourcess arrives — and when your next moment does too.
+            Request a beta invite. We&apos;ll email you a TestFlight link for iPhone.
           </p>
 
-          <div className="mt-8 mb-10">
+          <div className="mt-8 mb-8">
             <HourcessWordmarkSVG width={168} />
           </div>
 
@@ -63,7 +63,7 @@ export default function Scene06Waitlist() {
           </div>
 
           <p className="mt-10 font-ui text-[11px] tracking-wide text-primary/35">
-            Hourcess · Choose your next moment
+            Hourcess · iOS TestFlight beta
           </p>
 
           <nav
@@ -82,14 +82,14 @@ export default function Scene06Waitlist() {
             <span aria-hidden className="text-primary/20">
               ·
             </span>
-            <a href="/subscriptions" className="transition hover:text-lavender">
-              Subscriptions
+            <a href="/support" className="transition hover:text-lavender">
+              Support
             </a>
             <span aria-hidden className="text-primary/20">
               ·
             </span>
-            <a href="/support" className="transition hover:text-lavender">
-              Support
+            <a href="/delete-account" className="transition hover:text-lavender">
+              Delete account
             </a>
           </nav>
         </motion.div>

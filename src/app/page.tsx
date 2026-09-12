@@ -13,7 +13,7 @@ export default function Page() {
         <p>
           Hourcess is an upcoming iOS app for people who keep scrolling. It notices the pattern and
           offers one real-world alternative — football, friends, movement — without shaming you.
-          Join the waitlist to choose your spot.
+          Join the iOS TestFlight beta — request an invite.
         </p>
       </header>
       <HomePage />

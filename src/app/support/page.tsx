@@ -10,7 +10,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Support",
-  description: `Get help with ${SITE_NAME} — account, subscriptions, and privacy.`,
+  description: `Get help with ${SITE_NAME} — account deletion, subscriptions, and privacy.`,
   alternates: { canonical: "/support" },
 };
 
@@ -34,33 +34,58 @@ export default function SupportPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Common topics">
-        <ul className="list-disc space-y-3 pl-5">
+      <LegalSection title="FAQ">
+        <ul className="space-y-5">
           <li>
-            <strong className="text-primary">Subscriptions</strong> — {SITE_NAME} offers{" "}
-            {SUBSCRIPTION_PLANS.map((p) => p.name).join(" and ")} (
-            {SUBSCRIPTION_PLANS.map((p) => p.billing.toLowerCase()).join(" / ")}). Manage billing
-            and cancel in Apple or Google account settings. Details:{" "}
-            <Link href="/subscriptions" className="text-lavender hover:underline">
-              Subscriptions
-            </Link>
-            .
+            <p className="font-medium text-primary">How do I delete my account?</p>
+            <p className="mt-1.5">
+              Open Hourcess → <strong className="text-primary">Profile → Delete account</strong> →
+              confirm. Full steps:{" "}
+              <Link href="/delete-account" className="text-lavender hover:underline">
+                Delete your account
+              </Link>
+              .
+            </p>
+            <p className="mt-2">
+              If you can’t access the app, email{" "}
+              <a href={`mailto:${SUPPORT_EMAIL}`} className="text-lavender hover:underline">
+                {SUPPORT_EMAIL}
+              </a>{" "}
+              and ask for account deletion, including the email used to sign up. In-app deletion is
+              the primary method.
+            </p>
+            <p className="mt-2 text-sm">
+              Deleting your account does not cancel Apple subscriptions. Manage those in{" "}
+              <strong className="text-primary">
+                iPhone Settings → Apple ID → Subscriptions
+              </strong>
+              .
+            </p>
           </li>
           <li>
-            <strong className="text-primary">Restore purchases</strong> — Use Restore Purchases in
-            the app while signed into the same App Store / Play account used to buy.
+            <p className="font-medium text-primary">How do subscriptions work?</p>
+            <p className="mt-1.5">
+              {SITE_NAME} offers {SUBSCRIPTION_PLANS.map((p) => p.name).join(" and ")} (
+              {SUBSCRIPTION_PLANS.map((p) => p.billing.toLowerCase()).join(" / ")}). Manage billing
+              and cancel in Apple or Google account settings. Details:{" "}
+              <Link href="/subscriptions" className="text-lavender hover:underline">
+                Subscriptions
+              </Link>
+              .
+            </p>
           </li>
           <li>
-            <strong className="text-primary">Delete account</strong> — Email us from your account
-            address requesting deletion. See our{" "}
-            <Link href="/privacy" className="text-lavender hover:underline">
-              Privacy Policy
-            </Link>
-            .
+            <p className="font-medium text-primary">How do I restore purchases?</p>
+            <p className="mt-1.5">
+              Use Restore Purchases in the app while signed into the same App Store / Play account
+              used to buy.
+            </p>
           </li>
           <li>
-            <strong className="text-primary">Refunds</strong> — Requested through Apple or Google,
-            not through {SITE_NAME} directly.
+            <p className="font-medium text-primary">How do refunds work?</p>
+            <p className="mt-1.5">
+              Requested through Apple or Google, not through {SITE_NAME} directly.
+            </p>
           </li>
         </ul>
       </LegalSection>
@@ -68,11 +93,7 @@ export default function SupportPage() {
       <LegalSection title="Legal">
         <nav className="flex flex-wrap gap-x-5 gap-y-2">
           {LEGAL_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-lavender hover:underline"
-            >
+            <Link key={link.href} href={link.href} className="text-lavender hover:underline">
               {link.label}
             </Link>
           ))}

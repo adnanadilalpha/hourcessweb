@@ -33,7 +33,7 @@ export default function SubscriptionsPage() {
           {SUBSCRIPTION_PLANS.map((plan) => (
             <div
               key={plan.id}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+              className="rounded-2xl border border-white/10 bg-white/3 p-5"
             >
               <div className="flex items-center justify-between gap-2">
                 <p className="font-ui text-[11px] uppercase tracking-[0.2em] text-lavender">
@@ -148,6 +148,10 @@ export default function SubscriptionsPage() {
           Requesting account deletion (see{" "}
           <Link href="/privacy" className="text-lavender hover:underline">
             Privacy Policy
+          </Link>{" "}
+          and{" "}
+          <Link href="/delete-account" className="text-lavender hover:underline">
+            Delete your account
           </Link>
           ) removes your {SITE_NAME} account data we control. It does not automatically cancel an
           active App Store or Play subscription — cancel that separately as above.
